@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  TableView Test
 //
-//  Created by D7703_04 on 2018. 4. 30..
+//  Created by D7703_08 on 2018. 4. 30..
 //  Copyright © 2018년 D7703_04. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var data = ["강아지", "고양이", "토끼"]
-    var subData = ["ONE", "TWO", "THREE"]
+    var subData = ["one", "two", "three"]
     
     @IBOutlet weak var myTableView: UITableView!
     
