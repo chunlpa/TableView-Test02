@@ -16,6 +16,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var myTableView: UITableView!
     
     // UITableViewDataSource
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "1st section"
+        }else {
+            return "2nd section"
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -25,15 +38,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let identifier = "RE"
         let cell = myTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         
+        
+        //cell에 이미지 넣기
+        let myImage = UIImage(named:"동물\(indexPath.row).jpg")
+        cell.imageView?.image = myImage
         cell.textLabel?.text = data[indexPath.row]
         cell.detailTextLabel?.text = "section= \(indexPath.section) row= \(indexPath.row)"
         
-        let myImage = UIImage(named:"동물\(indexPath.row).jpg")
-        cell.imageView?.image = myImage
-        
-        
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let myAlert = UIAlertController(title: data[indexPath.row], message: subData[indexPath.row], preferredStyle: .alert)
@@ -53,8 +67,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         myAlert.addAction(libAction)
         myAlert.addAction(cancelAction)
         present(myAlert, animated: true, completion: nil)
-        
-        
+    }
+    //row의 height 조절
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
     
     override func viewDidLoad() {
